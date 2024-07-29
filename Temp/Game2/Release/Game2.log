@@ -1,0 +1,6 @@
+﻿  Main.cpp
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 11 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  Game2.vcxproj -> C:\Users\rfoster\Documents\2024NeumontClasses\C++2\GameEngine-C++2\Bin\Game2\Release\Game2.exe

@@ -1,0 +1,21 @@
+﻿  Actor.cpp
+C:\Users\rfoster\Documents\2024NeumontClasses\C++2\GameEngine-C++2\Engine\Source\MathUtils.h(9,25): warning C4305: 'initializing': truncation from 'double' to 'const float'
+  Audio.cpp
+  Engine.cpp
+C:\Users\rfoster\Documents\2024NeumontClasses\C++2\GameEngine-C++2\Engine\Source\MathUtils.h(9,25): warning C4305: 'initializing': truncation from 'double' to 'const float'
+  Etimer.cpp
+  Font.cpp
+  Input.cpp
+C:\Users\rfoster\Documents\2024NeumontClasses\C++2\GameEngine-C++2\Engine\Source\MathUtils.h(9,25): warning C4305: 'initializing': truncation from 'double' to 'const float'
+  Model.cpp
+C:\Users\rfoster\Documents\2024NeumontClasses\C++2\GameEngine-C++2\Engine\Source\MathUtils.h(9,25): warning C4305: 'initializing': truncation from 'double' to 'const float'
+  Particle.cpp
+C:\Users\rfoster\Documents\2024NeumontClasses\C++2\GameEngine-C++2\Engine\Source\MathUtils.h(9,25): warning C4305: 'initializing': truncation from 'double' to 'const float'
+  ParticleSystem.cpp
+C:\Users\rfoster\Documents\2024NeumontClasses\C++2\GameEngine-C++2\Engine\Source\MathUtils.h(9,25): warning C4305: 'initializing': truncation from 'double' to 'const float'
+  Renderer.cpp
+  Scene.cpp
+C:\Users\rfoster\Documents\2024NeumontClasses\C++2\GameEngine-C++2\Engine\Source\MathUtils.h(9,25): warning C4305: 'initializing': truncation from 'double' to 'const float'
+  Text.cpp
+C:\Users\rfoster\Documents\2024NeumontClasses\C++2\GameEngine-C++2\Engine\Source\MathUtils.h(9,25): warning C4305: 'initializing': truncation from 'double' to 'const float'
+  Engine.vcxproj -> C:\Users\rfoster\Documents\2024NeumontClasses\C++2\GameEngine-C++2\Bin\Engine\Release\Engine.lib
