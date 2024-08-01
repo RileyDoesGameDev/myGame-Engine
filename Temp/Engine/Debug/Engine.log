@@ -1,14 +1,6 @@
 ﻿  Actor.cpp
-  Audio.cpp
-  Engine.cpp
-  Etimer.cpp
-  Font.cpp
-  Input.cpp
-  Model.cpp
-  Particle.cpp
-  ParticleSystem.cpp
-  Renderer.cpp
   Scene.cpp
+  Input.cpp
   Text.cpp
   Generating Code...
   Engine.vcxproj -> C:\Users\rfoster\Documents\2024NeumontClasses\C++2\GameEngine-C++2\Bin\Engine\Debug\Engine.lib
