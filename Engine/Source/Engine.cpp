@@ -1,8 +1,11 @@
 #include "Engine.h"
-Engine g_engine;
+#include <crtdbg.h>
+
 
 bool Engine::Initialize()
 {
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+
 	m_renderer = std::make_unique<Renderer>();
 	m_input = std::make_unique<Input>();
 	m_audio = std::make_unique<Audio>();
@@ -14,6 +17,7 @@ bool Engine::Initialize()
 
 	m_time = std::make_unique<Time>();
 	m_particleSystem = std::make_unique<ParticleSystem>();
+
 	return true;
 }
 
@@ -22,6 +26,10 @@ void Engine::Shutdown()
 	m_renderer->Shutdown();
 	m_audio->Shutdown();
 	m_input->Shutdown();
+
+	
+
+	_CrtMemDumpAllObjectsSince(NULL);
 }
 
 void Engine::Update()
