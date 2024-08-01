@@ -1,22 +1,23 @@
-#include "Renderer.h"
-#include "Vector2.h"
-#include "Particle.h"
-#include "Etimer.h"
-#include "input.h"
-#include "Random.h"
-#include "MathUtils.h"
-#include "Model.h"
-#include "Color.h"
-#include "Transform.h"
+#include "Renderer/Renderer.h"
+#include "Math/Vector2.h"
+#include "Renderer/Particle.h"
+#include "Core/Etimer.h"
+#include "Input/Input.h"
+#include "Math/Random.h"
+#include "math/MathUtils.h"
+#include "Renderer/Model.h"
+#include "Renderer/Color.h"
+#include "Math/Transform.h"
 #include "Engine.h"
-#include "Scene.h"
-#include "Font.h"
-#include "Text.h"
+#include "Framework/Scene.h"
+#include "Renderer/Font.h"
+#include "Renderer/Text.h"
 #include <fmod.hpp>
 #include <vector>
 #include <iostream>
 #include <cstdlib>
 #include <SDL.h>
+#include <cassert>
 
 using namespace std;
 
@@ -26,24 +27,23 @@ using namespace std;
 int main(int argc, char* argv[])
 {
 
-    g_engine.Initialize();
-   
+    std::unique_ptr<Engine> engine = std::make_unique<Engine>();
 
+   engine->Initialize();
 
+    File::SetFilePath("Assets");
+  // std::cout
 
-
-
-    while (!g_engine.IsQuit())
+    while (!engine->IsQuit())
     {
-        g_engine.Update();
+        engine->Update();
    
-        g_engine.GetRenderer().SetColor(1, 0, 0, 0);
-        g_engine.GetRenderer().BegineFrame();
-        g_engine.GetPS().Draw(g_engine.GetRenderer());
+        engine->GetRenderer().SetColor(1, 0, 0, 0);
+        engine->GetRenderer().BegineFrame();
 
-        g_engine.GetRenderer().EndFrame();
+        engine->GetRenderer().EndFrame();
 
     }
-    g_engine.Shutdown();
+    engine->Shutdown();
     return 0;
 }
