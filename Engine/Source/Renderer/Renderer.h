@@ -2,6 +2,11 @@
 #include<SDL.h>
 #include<string>
 #include <SDL_ttf.h>
+#include <SDL_image.h>
+
+
+class Texture;
+
 class Renderer
 {
 public:
@@ -23,7 +28,8 @@ public:
 	void DrawPoint(float x, float y);
 	void DrawRect(int x, int y, int w, int h);
 	void DrawRect(float x, float y, float w, float h);
-
+	friend class Texture;
+	void DrawTexture(Texture* texture, float x, float y, float angle); //...use default value 0.0f...
 
 private:
 	SDL_Renderer* m_renderer = nullptr;

@@ -1,4 +1,5 @@
 #include "Renderer.h"
+#include "Texture.h"
 #include <iostream>
 
 bool Renderer::Initialize()
@@ -15,6 +16,18 @@ bool Renderer::Initialize()
 			std::cerr << "Error initializing SDL TTF: " << SDL_GetError() << std::endl;
 			return false;
 		}
+
+
+
+		// initialize Image SDL, supports BMP, JPG, and PNG
+		if (IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG) == 0)
+		{
+			std::cerr << "Error initializing SDL Image: " << SDL_GetError() << std::endl;
+			return false;
+		}
+
+
+
 
 		return true;
 }
@@ -39,7 +52,9 @@ bool Renderer::CreateWindow(std::string title, int width, int height)
 	{
 		std::cerr << "Error creating SDL window: " << SDL_GetError() << std::endl;
 		SDL_Quit();
+		IMG_Quit();
 		return 1;
+
 	}
 	// create renderer
 	 m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
@@ -94,3 +109,17 @@ void Renderer::DrawRect(float x, float y, float w, float h)
 	SDL_RenderFillRectF(m_renderer, &rect);
 }
 
+void Renderer::DrawTexture(Texture* texture, float x, float y, float angle)
+{
+	
+	Vector2 size = texture->GetSize	();
+
+		SDL_FRect destRect;
+	destRect.x = x;
+	destRect.y = y;
+	destRect.w = size.x;
+	destRect.h = size.y;
+
+	// https://wiki.libsdl.org/SDL2/SDL_RenderCopyExF
+	SDL_RenderCopyExF(m_renderer, texture->m_texture, NULL, &destRect, angle, NULL, SDL_FLIP_NONE);
+}

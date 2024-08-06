@@ -27,6 +27,9 @@
     <Filter Include="Resource Files\Source\Renderer">
       <UniqueIdentifier>{a590eaa7-cbe3-4dd2-a0cf-439634c7def9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Source\Recorces">
+      <UniqueIdentifier>{e5519d19-0e3e-4538-95ab-97b877af976f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Core\EAssert.cpp">
@@ -70,6 +73,9 @@
     </ClCompile>
     <ClCompile Include="Source\Engine.cpp">
       <Filter>Resource Files\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Renderer\Texture.cpp">
+      <Filter>Resource Files\Source\Renderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -129,6 +135,18 @@
     </ClInclude>
     <ClInclude Include="Source\Engine.h">
       <Filter>Resource Files\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Renderer\Texture.h">
+      <Filter>Resource Files\Source\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Recorse\Recorce.h">
+      <Filter>Resource Files\Source\Recorces</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Recorse\ResourseManager.h">
+      <Filter>Resource Files\Source\Recorces</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Core\Singleton.h">
+      <Filter>Resource Files\Source\Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
