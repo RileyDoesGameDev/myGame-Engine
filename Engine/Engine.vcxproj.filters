@@ -80,8 +80,11 @@
     <ClCompile Include="Source\Renderer\Texture.cpp">
       <Filter>Resource Files\Source\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Core\json.cpp">
+      <Filter>Resource Files\Source\Core</Filter>
+    </ClCompile>
     <ClCompile Include="Source\Components\TextureComponent.cpp">
-      <Filter>Resource Files\Source</Filter>
+      <Filter>Resource Files\Source\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -168,5 +171,13 @@
     <ClInclude Include="Source\Resorce\ResourseManager.h">
       <Filter>Resource Files\Source\Resorces</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Core\json.h">
+      <Filter>Resource Files\Source\Core</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\Build\Assets\test.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

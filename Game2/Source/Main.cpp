@@ -14,6 +14,8 @@
 #include "Renderer/Text.h"
 #include "Resorce/ResourseManager.h"
 #include "Renderer/Texture.h"
+#include "Core/json.h"
+
 
 #include <fmod.hpp>
 #include <vector>
@@ -39,6 +41,27 @@ int main(int argc, char* argv[])
 
 
     File::SetFilePath("Assets");
+
+    std::string s;
+    File::ReadFile("test.txt", s);
+    std::cout << s;
+
+    //rapidjson::Document document;
+    //Json::Load("test.txt", document);
+
+    //std::string name;
+    //int age;
+    //bool isAlive;
+
+    //READ_DATA(document, age);
+    //READ_DATA(document, name);
+    //READ_DATA(document, isAlive);
+    //Json::Read(document, "age", age);
+    //Json::Read(document, "name", name);
+    //Json::Read(document, "isAlive", isAlive);
+
+    //std::cout << age;
+
     {
         // create texture, using shared_ptr so texture can be shared
         std::shared_ptr<Texture> texture = std::make_shared<Texture>();
@@ -52,9 +75,9 @@ int main(int argc, char* argv[])
         actor->AddComponent(std::move(component));
 
 
-        res_t<Font> font = ResourceManager::Instance().Get<Font>("Quick Dragon.otf", 12);
+        res_t<Font> font = ResourceManager::Instance().Get<Font>("Quick Dragon.otf", 50);
         std::unique_ptr<Text> text = std::make_unique<Text>(font);
-        text->Create(engine->GetRenderer(), "Hello!", { 1, 1, 0, 1 });
+        text->Create(engine->GetRenderer(), "Hello!", { 255, 1, 255, 1 });
 
 
         while (!engine->IsQuit())
@@ -63,10 +86,10 @@ int main(int argc, char* argv[])
             actor->Update(engine->GetTime().GetDeltaTime());
             engine->GetRenderer().SetColor(1, 0, 0, 0);
             engine->GetRenderer().BegineFrame();
-            text->Draw(engine->GetRenderer(), 200, 200);
-
             engine->GetRenderer().DrawTexture(texture.get(), 200, 90, 0);
-            actor->Draw(engine->GetRenderer());
+
+           actor->Draw(engine->GetRenderer());
+            text->Draw(engine->GetRenderer(), 200, 200);
             engine->GetRenderer().EndFrame();
 
         }

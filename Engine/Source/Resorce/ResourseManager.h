@@ -28,7 +28,7 @@ inline res_t<T> ResourceManager::Get(const std::string& name, TArgs... args)
 	}
 
 	res_t<T> resource = std::make_shared<T>();
-	if(!resource->Create(name, args...));
+	if(!resource->Create(name, args...))
 	{
 		std::cerr << "could not create resource:" << name << std::endl;
 		return res_t<T>();
