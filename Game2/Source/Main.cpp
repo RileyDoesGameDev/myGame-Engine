@@ -12,7 +12,7 @@
 #include "Framework/Scene.h"
 #include "Renderer/Font.h"
 #include "Renderer/Text.h"
-#include "Recorse/ResourseManager.h"
+#include "Resorce/ResourseManager.h"
 #include "Renderer/Texture.h"
 
 #include <fmod.hpp>
@@ -35,33 +35,43 @@ int main(int argc, char* argv[])
 
    engine->Initialize();
 
-   ResourceManager rm = ResourceManager();
+   //ResourceManager rm = ResourceManager();
 
 
     File::SetFilePath("Assets");
-
-    // create texture, using shared_ptr so texture can be shared
-
-
-
-   std::shared_ptr<Texture> texture = std::make_shared<Texture>();
-
-    // texture = ResourceManager::Instance().Get<Texture>("../Assets/image0.jpg", engine->GetRenderer());
-    texture->Load("image0.png", engine->GetRenderer());
-
-   
-
-
-    while (!engine->IsQuit())
     {
-        engine->Update();
-        engine->GetRenderer().SetColor(1, 0, 0, 0);
-        engine->GetRenderer().BegineFrame();
-        engine->GetRenderer().DrawTexture(texture.get(),200, 90, 0);
+        // create texture, using shared_ptr so texture can be shared
+        std::shared_ptr<Texture> texture = std::make_shared<Texture>();
+        // texture = ResourceManager::Instance().Get<Texture>("../Assets/image0.jpg", engine->GetRenderer());
+        texture->Load("image0.png", engine->GetRenderer());
 
-        engine->GetRenderer().EndFrame();
+        Transform t{ Vector2{30,30} };
+        std::unique_ptr<Actor> actor = std::make_unique<Actor>(t);
+        std::unique_ptr<TextureComponent> component = std::make_unique<TextureComponent>();
+        component->texture = texture;
+        actor->AddComponent(std::move(component));
 
+
+        res_t<Font> font = ResourceManager::Instance().Get<Font>("Quick Dragon.otf", 12);
+        std::unique_ptr<Text> text = std::make_unique<Text>(font);
+        text->Create(engine->GetRenderer(), "Hello!", { 1, 1, 0, 1 });
+
+
+        while (!engine->IsQuit())
+        {
+            engine->Update();
+            actor->Update(engine->GetTime().GetDeltaTime());
+            engine->GetRenderer().SetColor(1, 0, 0, 0);
+            engine->GetRenderer().BegineFrame();
+            text->Draw(engine->GetRenderer(), 200, 200);
+
+            engine->GetRenderer().DrawTexture(texture.get(), 200, 90, 0);
+            actor->Draw(engine->GetRenderer());
+            engine->GetRenderer().EndFrame();
+
+        }
     }
+    ResourceManager::Instance().Clear();
     engine->Shutdown();
     return 0;
 }

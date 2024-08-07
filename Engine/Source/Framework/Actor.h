@@ -1,20 +1,21 @@
 #pragma once
 #include "../Math/Transform.h"
 #include <string>
-#include "../Renderer/Model.h"
+
+#include "Components/Component.h"
+#include "vector"
+#include <memory>
 class Model;
 class Renderer;
 class Scene;
-class Actor
+
+class Actor : public Object
 {
 public:
 	Actor() = default;
 	Actor(const Transform& transform) : m_transform{ transform } {}
-	Actor(const Transform& transform, Model* model) :
-		m_transform{ transform },
-		m_model{model}
-	{}
 
+	void Initialize() override;
 	virtual void Update(float dt);
 	virtual void Draw(Renderer& renderer);
 	void SetDamping(float damping) { m_damping = damping; }
@@ -26,8 +27,8 @@ public:
 
 	const std::string GetTag() { return m_tag; }
 	const Transform& GetTransform() { return m_transform; }
-
-	virtual void OnCollision(Actor* actor) = 0;
+	void AddComponent(std::unique_ptr<Component> comonent);
+	virtual void OnCollision(Actor* actor) {}
 	//float GetRadius() {return (m_model) ? m_model->GetRadius() :}
 
 	friend class Scene;
@@ -44,5 +45,11 @@ protected:
 
 	Model* m_model{ nullptr };
 	Scene* m_scene{ nullptr };
+
+	std::vector<std::unique_ptr<Component>> m_components;
+
+
+
+
 };
 

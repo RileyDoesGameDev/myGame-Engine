@@ -1,5 +1,5 @@
 #pragma once
-#include "../Recorse/Recorce.h"
+#include "../Resorce/Resorce.h"
 
 #include <SDL_ttf.h>
 #include <string>
@@ -13,8 +13,8 @@ public:
 	friend class Text;
 
 	bool Create(std::string name, ...) override;
-	bool Load(const std::string& name, int fontSize);
-
+	bool Load(const std::string& filename, int fontSize);
+	friend class Text;
 private:
 	_TTF_Font* m_ttfFont{ nullptr };
 

@@ -20,20 +20,22 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Audio\Audio.h" />
+    <ClInclude Include="Source\Components\Component.h" />
+    <ClInclude Include="Source\Components\RenderComponent.h" />
+    <ClInclude Include="Source\Components\TextureComponent.h" />
     <ClInclude Include="Source\Core\EAssert.h" />
     <ClInclude Include="Source\Core\EFIle.h" />
     <ClInclude Include="Source\Core\Etimer.h" />
     <ClInclude Include="Source\Core\Singleton.h" />
     <ClInclude Include="Source\Engine.h" />
     <ClInclude Include="Source\Framework\Actor.h" />
+    <ClInclude Include="Source\FrameWork\Object.h" />
     <ClInclude Include="Source\Framework\Scene.h" />
     <ClInclude Include="Source\Input\Input.h" />
     <ClInclude Include="Source\Math\MathUtils.h" />
     <ClInclude Include="Source\Math\Random.h" />
     <ClInclude Include="Source\Math\Transform.h" />
     <ClInclude Include="Source\Math\Vector2.h" />
-    <ClInclude Include="Source\Recorse\Recorce.h" />
-    <ClInclude Include="Source\Recorse\ResourseManager.h" />
     <ClInclude Include="Source\Renderer\Color.h" />
     <ClInclude Include="Source\Renderer\Font.h" />
     <ClInclude Include="Source\Renderer\Model.h" />
@@ -42,9 +44,12 @@
     <ClInclude Include="Source\Renderer\Renderer.h" />
     <ClInclude Include="Source\Renderer\Text.h" />
     <ClInclude Include="Source\Renderer\Texture.h" />
+    <ClInclude Include="Source\Resorce\Resorce.h" />
+    <ClInclude Include="Source\Resorce\ResourseManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Audio\Audio.cpp" />
+    <ClCompile Include="Source\Components\TextureComponent.cpp" />
     <ClCompile Include="Source\Core\EAssert.cpp" />
     <ClCompile Include="Source\Core\EFIle.cpp" />
     <ClCompile Include="Source\Core\Etimer.cpp" />
@@ -144,7 +149,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile />
       <PrecompiledHeaderOutputFile />
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\SDL2\include;$(SolutionDir)ThirdParty\fmod\core\inc;$(SolutionDir)Build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\SDL2\include;$(SolutionDir)ThirdParty\fmod\core\inc;$(SolutionDir)Build;$(ProjectDir)Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -166,7 +171,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile />
       <PrecompiledHeaderOutputFile />
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\SDL2\include;$(SolutionDir)ThirdParty\fmod\core\inc;$(SolutionDir)Build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\SDL2\include;$(SolutionDir)ThirdParty\fmod\core\inc;$(SolutionDir)Build;$(ProjectDir)Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -188,7 +193,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile />
       <PrecompiledHeaderOutputFile />
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\SDL2\include;$(SolutionDir)ThirdParty\fmod\core\inc;$(SolutionDir)Build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\SDL2\include;$(SolutionDir)ThirdParty\fmod\core\inc;$(SolutionDir)Build;$(ProjectDir)Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -210,7 +215,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile />
       <PrecompiledHeaderOutputFile />
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\SDL2\include;$(SolutionDir)ThirdParty\fmod\core\inc;$(SolutionDir)Build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\SDL2\include;$(SolutionDir)ThirdParty\fmod\core\inc;$(SolutionDir)Build;$(ProjectDir)Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>

@@ -24,10 +24,13 @@
 #include "Audio/Audio.h"
 #include "Framework/Actor.h"
 
+// Resources
 #include <fmod.hpp>
 #include <memory>
 
-// Resources
+//components
+#include "Components/TextureComponent.h"
+
 
 
 
