@@ -3,6 +3,7 @@
 # Ignore Visual Studio temporary files
 .vs/
 Bin/
+Temp/
 *.vsidx
 *.vc.opendb
 *.ipch
