@@ -182,6 +182,9 @@ $(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget);$(LibraryPath)</LibraryPath>
       <Project>{4e5f36d7-8bfd-4964-bad8-cc4b21c97bec}</Project>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\Player.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
