@@ -3,7 +3,7 @@
 #include<string>
 #include <SDL_ttf.h>
 #include <SDL_image.h>
-
+#include <memory>
 
 class Texture;
 
@@ -29,7 +29,8 @@ public:
 	void DrawRect(int x, int y, int w, int h);
 	void DrawRect(float x, float y, float w, float h);
 	friend class Texture;
-	void DrawTexture(Texture* texture, float x, float y, float angle); //...use default value 0.0f...
+	void DrawTexture(std::weak_ptr<Texture>texture, float x, float y, float angle); 
+	void DrawTexture(std::weak_ptr<Texture>texture, const struct Transform& transform, bool hflip = false);
 
 private:
 	SDL_Renderer* m_renderer = nullptr;

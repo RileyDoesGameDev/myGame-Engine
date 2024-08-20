@@ -2,6 +2,11 @@
 #include <crtdbg.h>
 
 
+
+
+
+
+
 bool Engine::Initialize()
 {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
@@ -9,6 +14,7 @@ bool Engine::Initialize()
 	m_renderer = std::make_unique<Renderer>();
 	m_input = std::make_unique<Input>();
 	m_audio = std::make_unique<Audio>();
+	m_physics->Initialize();
 
 	m_renderer->Initialize();
 	m_renderer->CreateWindow("Game", 800, 600);
@@ -17,6 +23,7 @@ bool Engine::Initialize()
 
 	m_time = std::make_unique<Time>();
 	m_particleSystem = std::make_unique<ParticleSystem>();
+	m_physics = std::make_unique<Physics>();
 
 	return true;
 }
@@ -26,6 +33,7 @@ void Engine::Shutdown()
 	m_renderer->Shutdown();
 	m_audio->Shutdown();
 	m_input->Shutdown();
+m_physics->Shutdown();
 
 	
 
@@ -51,6 +59,7 @@ void Engine::Update()
 	m_input->update();
 	m_audio->Update();
 	m_particleSystem->Update(m_time->GetDeltaTime());
+	m_physics->Update(m_time->GetDeltaTime());
 
 	
 }

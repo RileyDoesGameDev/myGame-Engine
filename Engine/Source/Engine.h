@@ -6,7 +6,7 @@
 #include "Core/EFIle.h"
 #include "core/Factory.h"
 #include "core/json.h"
-
+#include "Core/EString.h"
 
 //**systems**
 //renderer
@@ -23,14 +23,22 @@
 //Audio
 #include "Audio/Audio.h"
 #include "Framework/Actor.h"
+#include "Framework/Scene.h"
 
 // Resources
 #include <fmod.hpp>
 #include <memory>
+#include "Resorce/Resorce.h"
+#include "Resorce/ResourseManager.h"
 
 //components
 #include "Components/TextureComponent.h"
+#include "Components/physicsComponent.h"
+#include "Components/EnginePhysicsComponent.h"
+#include "Components/TextComponent.h"
 
+// physics
+#include "Physics/Physics.h"
 
 
 
@@ -50,6 +58,9 @@ public:
 	void Shutdown();
 	void Update();
 	bool IsQuit() const{ return quit; }
+
+	Physics& GetPhysics() { return *m_physics; }
+
 private:
 	std::unique_ptr<Time> m_time;
 
@@ -57,6 +68,7 @@ private:
 	std::unique_ptr<Renderer> m_renderer;
 	std::unique_ptr<Input> m_input;
 	std::unique_ptr<Audio> m_audio;
+	std::unique_ptr<Physics> m_physics;
 	
 	bool quit{ false };
 };

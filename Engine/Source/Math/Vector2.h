@@ -44,9 +44,10 @@ struct Vector2
 	Vector2& operator /= (float s) { x /= s; y /= s; return *this; }
 
 
-	float Lenthsqr() const { return (x * x) + (y * y); }
+	float Lengthsqr() const { return (x * x) + (y * y); }
 	float Length() const { return Math::Sqrt((x * x) + (y * y)); }
-
+	//float Distance(const Vector2& v) { return (v - *this).Lengthsqr(); }
+	float Distance(const Vector2& v) { return (v - *this).Length(); }
 	float Angle() { return Math::Atan2(x, y); }
 	Vector2 Rotate(float radians) const;
 
