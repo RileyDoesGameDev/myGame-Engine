@@ -1,10 +1,19 @@
 #pragma once
 #include "RenderComponent.h"
 
+
 class TextComponent : public RenderComponent
 {
+public:
+	TextComponent() = default;
+
+	TextComponent(const TextComponent& other);
+
+
 	CLASS_DECLARATION(TextComponent)
-	// Inherited via RenderComponent
+	CLASS_PROTOTYPE(TextComponent)
+
+
 	void Initialize() override;
 	void Update(float dt) override;
 	void draw(Renderer& renderer) override;

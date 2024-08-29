@@ -4,13 +4,19 @@
 #include "Core/Factory.h"
 #include <algorithm>
 #include "Components/CollisionComponent.h"
-
+#include "Core/EAssert.h"
 void Scene::Initialize()
 {
 	for (auto& actor : actors)
 	{
 		actor->Initialize();
 	}
+}
+
+
+Scene::Scene(const Scene& other)
+{
+	ASSERT(false);
 }
 
 void Scene::Read(const json_t& value)
@@ -22,7 +28,19 @@ void Scene::Read(const json_t& value)
 			
 			auto actor = Factory::Instance().Create<Actor>(Actor::GetTypeName());
 			actor->Read(actorValue);
+			bool prototype = false;
+			READ_DATA(actorValue, prototype);
+
+			if (prototype) 
+			{
+				std::string name = actor->name;
+				Factory::Instance().RegisterPrototype<Actor>(name, std::move(actor));
+			}
+			else
+			{
+
 			AddActor(std::move(actor));
+			}
 		}
 	}
 }
@@ -31,32 +49,11 @@ void Scene::Write(json_t& value)
 }
 void Scene::Update(float dt)
 {
-	// Updat
 	for (auto& actor : actors)
 	{
 		if (actor->active) actor->Update(dt);
 	}
-		actors.erase(std::remove_if(actors.begin(), actors.end(), [](auto& actor) { return actor->destroyed; }), actors.end());
-		for (auto& actor1 : actors)
-		{
-			CollisionComponent* collision1 = actor1->GetComponent<CollisionComponent>();
-			if (!collision1) continue;
-
-			for (auto& actor2 : actors)
-			{
-				// don't check with self
-				if (actor1 == actor2) continue;
-
-				CollisionComponent* collision2 = actor2->GetComponent<CollisionComponent>();
-				if (!collision2) continue;
-
-				if (collision1->CheckCollision(collision2))
-				{
-					if (actor1->OnCollisionEnter) actor1->OnCollisionEnter(actor2.get());
-					if (actor2->OnCollisionEnter) actor2->OnCollisionEnter(actor1.get());
-				}
-			}
-		}
+	
 
 }
 
@@ -68,13 +65,16 @@ void Scene::Draw(Renderer& renderer)
 	}
 }
 
-void Scene::AddActor(std::unique_ptr<Actor> actor)
+void Scene::AddActor(std::unique_ptr<Actor> actor, bool initialize)
 {
+	
 	actor->scene = this;
+	if (initialize) actor->Initialize();
 	actors.push_back(std::move(actor));
 }
 
-void Scene::RemoveAll()
+void Scene::RemoveAll(bool force)
 {
-	actors.clear();
+	std::erase_if(actors, [force](auto& actor) {return (force || !actor->persistent); });
+	//actors.clear();
 }

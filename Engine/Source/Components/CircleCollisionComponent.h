@@ -17,7 +17,7 @@ public:
 	// Inherited via CollisionComponent
 	void Update(float dt) override;
 
-	bool CheckCollision(const CollisionComponent const* collision) override;
+	//bool CheckCollision(const CollisionComponent const* collision) override;
 
 
 	// Inherited via CollisionComponent

@@ -7,14 +7,9 @@
 
 
 
-
-
-
-
-
-#define CLASS_DECLARATION(className)                        \
-	static const char* GetTypeName() { return #className; } \
-	virtual void Read(const json_t& value);                 \
+#define CLASS_DECLARATION(className)                            \
+	static const char* GetTypeName() { return #className; }     \
+	virtual void Read(const json_t& value);                     \
 	virtual void Write(json_t& value);
 
 #define FACTORY_REGISTER(className)								\
@@ -29,17 +24,11 @@
 	static Register##className register_instance;
 
 
-
-//#define FACTORY_REGISTER(className)                         \
-//	class Register##className                               \
-//{                                                           \
-//public:                                                     \
-//	Regiter()                                               \
-//{                                                           \
-//	Facotry::Instance().Regiter<className>(className)       \
-//}                                                           \
-//};\
-static Register##className register_instance;
+#define CLASS_PROTOTYPE(className)                              \
+virtual std::unique_ptr<Object> clone()                         \
+{                                                               \
+	return std::make_unique<className>(*this);                  \
+}
 
 class Object : public Serializable
 {
@@ -47,6 +36,8 @@ public:
 	Object() = default;
 	Object(const std::string& name) : name{name} {}
 	virtual ~Object() = default;
+
+	virtual std::unique_ptr<Object> clone() = 0;
 	CLASS_DECLARATION(Object);
 	virtual void Initialize() = 0;
 	virtual void Activate()  { active = true; }
@@ -59,7 +50,7 @@ public:
 	std::string name;
 	bool active{ true };
 
-
+	bool persistent{ false };
 
 
 };

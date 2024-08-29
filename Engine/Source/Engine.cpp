@@ -14,16 +14,17 @@ bool Engine::Initialize()
 	m_renderer = std::make_unique<Renderer>();
 	m_input = std::make_unique<Input>();
 	m_audio = std::make_unique<Audio>();
-	m_physics->Initialize();
+	m_physics = std::make_unique<Physics>();
+	m_particleSystem = std::make_unique<ParticleSystem>();
+	m_time = std::make_unique<Time>();
+
 
 	m_renderer->Initialize();
 	m_renderer->CreateWindow("Game", 800, 600);
 	m_input->Initialize();
 	m_audio->Initialize();
 
-	m_time = std::make_unique<Time>();
-	m_particleSystem = std::make_unique<ParticleSystem>();
-	m_physics = std::make_unique<Physics>();
+	m_physics->Initialize();
 
 	return true;
 }
@@ -33,7 +34,7 @@ void Engine::Shutdown()
 	m_renderer->Shutdown();
 	m_audio->Shutdown();
 	m_input->Shutdown();
-m_physics->Shutdown();
+	m_physics->Shutdown();
 
 	
 

@@ -4,7 +4,7 @@
 #include <SDL_ttf.h>
 #include <SDL_image.h>
 #include <memory>
-
+#include "Math/Rect.h"
 class Texture;
 
 class Renderer
@@ -29,8 +29,10 @@ public:
 	void DrawRect(int x, int y, int w, int h);
 	void DrawRect(float x, float y, float w, float h);
 	friend class Texture;
+
 	void DrawTexture(std::weak_ptr<Texture>texture, float x, float y, float angle); 
 	void DrawTexture(std::weak_ptr<Texture>texture, const struct Transform& transform, bool hflip = false);
+	void DrawTexture(std::weak_ptr<Texture>texture, const struct Transform& transform, Rect& source,bool hflip = false);
 
 private:
 	SDL_Renderer* m_renderer = nullptr;

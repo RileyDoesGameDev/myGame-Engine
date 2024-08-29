@@ -1,57 +1,79 @@
 {
-  "actors": [
-    {
-      "name": "player",
-      "transform": {
-        "position": [ 60, 60 ],
-        "rotation": 0,
-        "scale": 2
+   "actors":[
+      {
+         "name":"Score",
+         "active":false,
+         "transform":{
+            "position":[
+               60,
+               360
+            ],
+            "rotation":0,
+            "scale":5
+         },
+         "components":[
+            {
+               "type":"TextComponent",
+               "text":"hello",
+               "fontName":"Fonts/Quick Dragon.otf",
+               "fontSize":24,
+               "color":[
+                  0,
+                  1,
+                  0,
+                  1
+               ]
+            }
+         ]
       },
-      "components": [
-        {
-          "type": "TextureComponent",
-          "textureName": "image0.png"
-        },
-        {
-          "type": "EnginePhysicsComponent",
-          "damping": 1
-        },
-        {
-          "type": "PlayerComponent",
-          "speed" : 100
-        }
-      ]
-    },
-    {
-      "name": "enemy",
-      "transform": {
-        "position": [ 160, 160 ],
-        "rotation": 90,
-        "scale": 1
-      },
-      "components": [
-        {
-          "type": "TextureComponent",
-          "textureName": "image0.png"
-        }
-      ]
-    },
-    {
-      "name": "text",
-      "transform": {
-        "position": [ 200, 200 ],
-        "rotation": 0,
-        "scale": 4
-      },
-      "components": [
-        {
-          "type": "TextComponent",
-          "text": "hellow",
-          "fontName": "Quick Dragon.otf",
-          "fontSize": 3,
-          "color": [0, 1, 0, 1]
-        }
-      ]
-    }
-  ]
+      {
+         "name":"player",
+         "transform":{
+            "position":[
+               200,
+               200
+            ],
+            "rotation":0,
+            "scale":1
+         },
+         "components":[
+            {
+			"type": "TextureAnimationComponent",
+			"animationName": "idle",
+			"animations": [
+				    {
+					    "name": "idle",
+					    "fps": 1,
+					    "numColumns": 1,
+					    "numRows": 1,
+					    "startFrame": 1,
+					    "endFrame": 1,
+					    "textureName": "Textures/RacingCar.png"
+				    }
+				   
+			    ]
+		    },
+            {
+               "type":"AudioComponent",
+               "soundName":"Audio/Racing.wav",
+               "playOnStart":true
+            },
+            {
+               "type":"Box2DPhysicsComponent",
+               "damping":1,
+               "angularDamping":1,
+               "gravityScale":0,
+               "isSensor":false,
+               "size":[
+                  32,
+                  16
+               ]
+            },
+            {
+               "type":"PlayerComponent",
+               "speed":50
+            }
+         ]
+      }
+   ]
 }

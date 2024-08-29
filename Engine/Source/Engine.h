@@ -1,5 +1,4 @@
 #pragma once
-
 //core
 #include "Core/Etimer.h"
 #include "Core/Eassert.h"
@@ -24,13 +23,17 @@
 #include "Audio/Audio.h"
 #include "Framework/Actor.h"
 #include "Framework/Scene.h"
-
+#include "Audio/AudioSource.h"
 // Resources
 #include <fmod.hpp>
 #include <memory>
 #include "Resorce/Resorce.h"
 #include "Resorce/ResourseManager.h"
 
+#include "Events/EventSystem.h"
+
+
+#include "Math/Rect.h"
 //components
 #include "Components/TextureComponent.h"
 #include "Components/physicsComponent.h"

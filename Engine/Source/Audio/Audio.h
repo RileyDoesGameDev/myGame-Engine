@@ -2,6 +2,7 @@
 #include <fmod.hpp>
 #include <map>
 #include <string>
+
 class Audio
 {
 public:
@@ -11,6 +12,10 @@ public:
 	bool Initialize();
 	void Shutdown();
 	void Update();
+	
+	
+	friend class AudioSource;
+	friend class AudioClip;
 
 	bool AddSound( const std::string& name);
 	bool PlaySound(std::string& name);

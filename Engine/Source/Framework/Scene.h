@@ -13,13 +13,15 @@ class Scene : public Object
 public:
 	void Initialize() override;
 	Scene(Engine* engine, Game* game = nullptr) : engine{ engine }, game{ game } {}
-	
-	CLASS_DECLARATION(Scene);
+	Scene(const Scene& other);
 
+	CLASS_DECLARATION(Scene)
+	CLASS_PROTOTYPE(Scene)
 	void Update(float dt);
 	void Draw(Renderer& renderer);
-	void AddActor(std::unique_ptr<Actor> actor);
-	void RemoveAll();
+	void AddActor(std::unique_ptr<Actor> actor, bool initialize = false);
+	
+	void RemoveAll(bool force);
 	template<typename T>
 	T* GetActor();
 
